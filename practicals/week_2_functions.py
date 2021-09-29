@@ -1,8 +1,22 @@
 ## Python functions of exercises week 2
 
+#%% import
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn import neighbors, linear_model
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.model_selection import GridSearchCV
+from sklearn.metrics import roc_curve, auc
+
+
+#%% Exercise Polynominal regression
+
 def polynominal_regression(X_train_data,y_train_data,X_test_data,y_test_data,polynominal_list = []):
     linearregression = linear_model.LinearRegression()
     # train the model using the training dataset
+    scaler = StandardScaler()
     model = Pipeline([
         ("scaler", scaler),
         ("poly", PolynomialFeatures()),
@@ -17,7 +31,7 @@ def polynominal_regression(X_train_data,y_train_data,X_test_data,y_test_data,pol
 
 
 
-def plot_score(clft):
+def plot_score(clft, polynominal_list = []):
     fig = plt.figure()
     results = clft.cv_results_['mean_test_score']
     plt.plot(polynominal_list,results)
@@ -28,10 +42,11 @@ def plot_score(clft):
 
     print(clft.cv_results_['rank_test_score'])
     
+#%% Exercise ROC curve analysis
     
 def KNN_model_ROC_plots(X_train, y_train, X_test, y_test, k_list):
     for k in k_list:
-    
+        scaler = StandardScaler()
         # initialize a k-NN classifier
         knn = neighbors.KNeighborsClassifier(n_neighbors=k)
         # Create the pipeline
