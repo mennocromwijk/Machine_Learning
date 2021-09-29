@@ -14,9 +14,6 @@ from sklearn.metrics import roc_curve, auc
 #%% Exercise Polynominal regression
 
 def polynominal_regression(X_train_data,y_train_data,X_test_data,y_test_data,polynominal_list = []):
-    """" 
-    
-    """"
     linearregression = linear_model.LinearRegression()
     # train the model using the training dataset
     scaler = StandardScaler()
@@ -35,9 +32,6 @@ def polynominal_regression(X_train_data,y_train_data,X_test_data,y_test_data,pol
 
 
 def plot_score(clft, polynominal_list = []):
-    """" 
-    
-    """"
     fig = plt.figure()
     results = clft.cv_results_['mean_test_score']
     plt.plot(polynominal_list,results)
@@ -51,12 +45,11 @@ def plot_score(clft, polynominal_list = []):
 #%% Exercise ROC curve analysis
     
 def KNN_model_ROC_plots(X_train, y_train, X_test, y_test, k_list):
-    """" 
+    """
     This function runs a knn model for a list of different k-values.
     Next the predictions will be determined, ROC curve is determined and
     the area under the curve (AUC) is calculated. Finally the ROC curves
-    will be plotted for all different values for k.
-          """"
+    will be plotted for all different values for k."""
     for k in k_list:
         scaler = StandardScaler()
         # initialize a k-NN classifier
