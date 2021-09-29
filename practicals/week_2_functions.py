@@ -15,7 +15,7 @@ from sklearn.metrics import roc_curve, auc
 
 def polynominal_regression(X_train_data,y_train_data,X_test_data,y_test_data,polynominal_list = []):
     linearregression = linear_model.LinearRegression()
-    # train the model using the training dataset
+    '''Function that performs a grid search on a specific polynomial model and calculates the predicted value for a the test data. '''
     scaler = StandardScaler()
     model = Pipeline([
         ("scaler", scaler),
@@ -32,6 +32,7 @@ def polynominal_regression(X_train_data,y_train_data,X_test_data,y_test_data,pol
 
 
 def plot_score(clft, polynominal_list = []):
+    ''' function that plots and prints the results from the grid search.'''
     fig = plt.figure()
     results = clft.cv_results_['mean_test_score']
     plt.plot(polynominal_list,results)
