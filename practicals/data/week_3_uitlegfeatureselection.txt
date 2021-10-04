@@ -1,0 +1,9 @@
+<p><font color='#770a0a'>Is the partition in training and validation sets playing a role in the selection of the hyperparameter? How will this affect the selection of the relevant features?</font></p>
+
+$\bf{Answers:}$ In order to train a model, a large part of the dataset is used as training set to reduce the bias and variance in the performance. The fewer hyperparameters the smaller the size of validation set needs to be, thus more data will be used for training. However if the model has many hyperparameters. Preferably a larger validation set is used to tune the hyperparameters.
+
+To find the most meaningful features ideally a large training set would be used. So adding more samples to the validation set, leads to fewer samples from which the model can learn underlying patterns of the data. So it will be difficult to reduce the feature space into a small selection of meaningful features.
+
+<p><font color='#770a0a'>Should the value of the intercept also be shrunk to zero with Lasso and Ridge regression? Motivate your answer.</font></p>
+
+$\bf{Answers:}$ The goal of Lasso and Ridge regression is to limit the number of features. This is done by finding the most meaningful features. Therefore the intercept value should never be shrunk to zero. In order to compare features, coefficients are standardized. When removing the intercept value, the coefficients are not standardized anymore and the effects of the change in the coefficients cannot be compared. 
